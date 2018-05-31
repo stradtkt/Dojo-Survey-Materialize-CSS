@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+{% block title %} {{super()}} | Survey {% endblock %}
+  {% block content %}
+    <div class="row">
+      <div class="col m2"></div>
+      <div class="col m8">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="alert">{{message}}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <h1 class="center h1">Dojo Survey</h1>
+        <div class="form">
+          <form action="/result" method="POST">
+              <div class="input-field">
+                  <input type="text" name="name">
+                  <label for="name">Name</label>  
+              </div>
+              <div class="input-field">
+                <select name="location" >
+                    <option value="" disabled selected></option>
+                    <option value="Dallas">Dallas</option>
+                    <option value="Seattle">Seattle</option>
+                    <option value="Redmond">Redmond</option>
+                    <option value="Washinton D.C.">Washington D.C.</option>
+                  </select>
+                  <label for="location">Location</label>
+                </div>
+              <div class="input-field">
+                  <select name="lang">
+                    <option value="" disabled selected></option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="PHP">PHP</option>
+                    <option value="IOS">IOS</option>
+                    <option value="C#">C#</option>
+                    <option value="C++">C++</option>
+                  </select>
+                  <label>Favorite Language</label>
+                </div>
+                <div class="input-field">
+                <div class="input-field">
+                    <textarea id="comment" name="comment" class="materialize-textarea"></textarea>
+                    <label for="comment">Comment</label>
+                </div>
+            <input type="submit" value="submit" class="btn green">
+          </form>
+        </div>
+      </div>
+      <div class="col m2"></div>
+    </div>
+{% endblock %}
