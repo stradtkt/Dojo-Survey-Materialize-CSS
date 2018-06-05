@@ -21,10 +21,13 @@ def result():
     validation_error = True
   elif len(session['name']) > 30:
     flash('Your name needs to be shorter than 30 characters')
-    validation_error = True    
+    validation_error = True
 
   if len(session['comment']) > 120:
     flash('Your comment needs to be shorter')
+    validation_error = True
+  elif session['comment'] == "":
+    flash("You need to type something in the comment field")
     validation_error = True
 
   if validation_error == True:
